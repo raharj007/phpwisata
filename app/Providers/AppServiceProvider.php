@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Services\Infrastructure\ConnectionService;
+use App\Services\Infrastructure\ConnectionServiceInterface;
+use App\Services\ResponseApiService;
+use App\Services\ResponseApiServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(ResponseApiServiceInterface::class, ResponseApiService::class);
+        $this->app->bind(ConnectionServiceInterface::class, ConnectionService::class);
     }
 
     /**
